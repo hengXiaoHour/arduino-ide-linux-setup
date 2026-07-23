@@ -1,10 +1,18 @@
-# Arduino IDE 2.x — Linux Desktop Integration
+# Arduino IDE 2.x — One-command Full Linux Install
 
-**One command. No FUSE. No broken icons. No "click does nothing".**
+**One paste. Downloads, installs, adds icon to menu. Done.**
 
-The Arduino IDE for Linux ships as an AppImage. It works when you double-click it, but getting it into your app menu with the proper icon is a nightmare. Existing guides copy icons into `~/.local/share/icons/hicolor/`, which **shadows the system icon theme and breaks every other app icon** (Brave, Chrome, Telegram, VSCode — all go blurry or disappear).
+The Arduino IDE for Linux ships as an AppImage. Double-clicking works, but getting it into your app menu with the proper icon is a nightmare. Existing guides copy icons into `~/.local/share/icons/hicolor/`, which **shadows the system icon theme and breaks every other app icon** (Brave, Chrome, Telegram — all go blurry or disappear).
 
-This script does it right.
+This script is a **complete installer** — not just an icon fixer. It downloads the latest Arduino IDE, extracts it (no FUSE needed), extracts the official icon, and creates a working desktop entry. One command, zero effort.
+
+## One-liner (full install)
+
+```bash
+curl -LO https://raw.githubusercontent.com/hengXiaoHour/arduino-ide-linux-setup/master/install_arduino_ide.py && python3 install_arduino_ide.py
+```
+
+That single command: **downloads the IDE → installs it → adds the icon → creates the menu entry**. You're done.
 
 ## The Problems It Solves
 
@@ -18,14 +26,6 @@ This script does it right.
 | **"No such file or directory" on paths with spaces** | `Exec` line not quoted | Double-quotes the `Exec` path |
 | **Chromium sandbox errors** | Missing `--no-sandbox` flag | Passes `--no-sandbox` |
 | **Bundled libraries not found** | Missing `LD_LIBRARY_PATH` | Sets `LD_LIBRARY_PATH` to the AppImage's bundled `usr/lib` |
-
-## One-liner Install
-
-```bash
-curl -LO https://raw.githubusercontent.com/hengXiaoHour/arduino-ide-linux-setup/master/install_arduino_ide.py && python3 install_arduino_ide.py
-```
-
-That's it — downloads the latest AppImage, extracts it, sets up the icon, creates the menu entry. Ready to use.
 
 ## Usage
 
