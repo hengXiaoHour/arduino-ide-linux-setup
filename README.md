@@ -25,7 +25,7 @@ This script does it right.
 curl -LO https://raw.githubusercontent.com/hengXiaoHour/arduino-ide-linux-setup/master/install_arduino_ide.py && python3 install_arduino_ide.py
 ```
 
-That's it. Downloads the latest AppImage, extracts it, sets up the icon, creates the menu entry, and symlinks `arduino-cli`.
+That's it — downloads the latest AppImage, extracts it, sets up the icon, creates the menu entry. Ready to use.
 
 ## Usage
 
