@@ -19,13 +19,21 @@ This script does it right.
 | **Chromium sandbox errors** | Missing `--no-sandbox` flag | Passes `--no-sandbox` |
 | **Bundled libraries not found** | Missing `LD_LIBRARY_PATH` | Sets `LD_LIBRARY_PATH` to the AppImage's bundled `usr/lib` |
 
+## One-liner Install
+
+```bash
+curl -LO https://raw.githubusercontent.com/hengXiaoHour/arduino-ide-linux-setup/master/install_arduino_ide.py && python3 install_arduino_ide.py
+```
+
+That's it. Downloads the latest AppImage, extracts it, sets up the icon, creates the menu entry, and symlinks `arduino-cli`.
+
 ## Usage
 
 ```bash
-# Auto-find AppImage in ~/Downloads, or prompt to download the latest release
+# Auto-download + install everything
 python install_arduino_ide.py
 
-# Or specify the path manually
+# Or specify the path manually (skip download)
 python install_arduino_ide.py ~/Downloads/arduino-ide_*.AppImage
 
 # Remove everything
