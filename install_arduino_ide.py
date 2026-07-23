@@ -136,25 +136,10 @@ Categories=Development;IDE;Electronics;
         stderr=subprocess.DEVNULL,
     )
 
-    bin_dir = home / ".local" / "bin"
-    bin_dir.mkdir(parents=True, exist_ok=True)
-    arduino_cli_path = extract_dir / "resources/app/lib/backend/resources/arduino-cli"
-    if arduino_cli_path.exists():
-        symlink = bin_dir / "arduino-cli"
-        if not symlink.exists():
-            symlink.symlink_to(arduino_cli_path)
-            print("  Symlinked arduino-cli -> ~/.local/bin/arduino-cli")
-    bashrc = home / ".bashrc"
-    path_line = 'export PATH="$HOME/.local/bin:$PATH"'
-    if bashrc.exists() and path_line not in bashrc.read_text():
-        with open(str(bashrc), "a") as f:
-            f.write(f"\n{path_line}\n")
-
     print()
     print("Arduino IDE installed successfully!")
     print(f"  App:      {apps_dir}")
     print(f"  Launcher: {desktop_file}")
-    print(f"  CLI:      arduino-cli (adds to PATH via ~/.bashrc)")
     print()
     print("Search 'Arduino IDE' in your app menu and pin to favorites.")
     print("If the icon doesn't appear, press Alt+F2, type 'r', and press Enter.\n")
