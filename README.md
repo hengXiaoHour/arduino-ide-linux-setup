@@ -56,6 +56,16 @@ After installation, search **"Arduino IDE"** in your app menu and pin to favorit
    - File is `chmod 755`
 6. **Validates** the desktop entry with `desktop-file-validate`
 
+## Serial Port Access
+
+If your board is detected but you can't upload or open the serial monitor:
+
+```bash
+sudo usermod -aG dialout $USER
+```
+
+Then **log out and log back in**. One-time fix.
+
 ## Upgrading
 
 When a new version comes out:

@@ -136,6 +136,8 @@ Categories=Development;IDE;Electronics;
         stderr=subprocess.DEVNULL,
     )
 
+    check_dialout(home)
+
     print()
     print("Arduino IDE installed successfully!")
     print(f"  App:      {apps_dir}")
@@ -143,6 +145,18 @@ Categories=Development;IDE;Electronics;
     print()
     print("Search 'Arduino IDE' in your app menu and pin to favorites.")
     print("If the icon doesn't appear, press Alt+F2, type 'r', and press Enter.\n")
+
+
+def check_dialout(home):
+    import grp
+    try:
+        if "dialout" not in [g.gr_name for g in grp.getgrall()]:
+            return
+        if "dialout" not in subprocess.run(["groups"], capture_output=True, text=True).stdout:
+            print("[!] You're not in the 'dialout' group — can't access serial ports.")
+            print("    Fix: sudo usermod -aG dialout $USER && logout & back in")
+    except Exception:
+        pass
 
 
 def uninstall(apps_dir, desktop_dir):
